@@ -177,3 +177,4 @@
 /home/bilal/RiderProjects/HizliBilisim/HizliBilisim/bin/Debug/net8.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
 /home/bilal/RiderProjects/HizliBilisim/HizliBilisim/bin/Debug/net8.0/package-lock.json
 /home/bilal/RiderProjects/HizliBilisim/HizliBilisim/bin/Debug/net8.0/package.json
+/home/bilal/RiderProjects/HizliBilisim/HizliBilisim/obj/Debug/net8.0/HizliBilisim.sourcelink.json

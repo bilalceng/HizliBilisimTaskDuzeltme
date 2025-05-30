@@ -8,7 +8,6 @@ function App() {
     const { isAuthenticated, checkingAuth } = useContext(AuthContext);
 
     if (checkingAuth) {
-        // You can return a loading spinner or null here while auth is being checked
         return <div>Loading...</div>;
     }
 

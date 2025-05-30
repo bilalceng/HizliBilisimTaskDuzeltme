@@ -1,21 +1,55 @@
+// src/AuthContext.js
 import React, { createContext, useState, useEffect } from "react";
+import { jwtDecode } from "jwt-decode";
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
-    const [checkingAuth, setCheckingAuth] = useState(true); // NEW: loading state
+    const [checkingAuth, setCheckingAuth] = useState(true);
 
     useEffect(() => {
-        // On mount, check token validity and update state
         const token = localStorage.getItem("token");
-        setIsAuthenticated(token && token !== "");
-        setCheckingAuth(false); // auth check done
+
+        if (token) {
+            try {
+                const decoded = jwtDecode(token);
+                const isExpired = decoded.exp * 1000 < Date.now(); // exp is in seconds
+
+                if (!isExpired) {
+                    setIsAuthenticated(true);
+                } else {
+                    console.warn("Token expired.");
+                    localStorage.removeItem("token");
+                    setIsAuthenticated(false);
+                }
+            } catch (error) {
+                console.error("Invalid token:", error);
+                localStorage.removeItem("token");
+                setIsAuthenticated(false);
+            }
+        } else {
+            setIsAuthenticated(false);
+        }
+
+        setCheckingAuth(false);
     }, []);
 
     const login = (token) => {
-        localStorage.setItem("token", token);
-        setIsAuthenticated(true);
+        try {
+            const decoded = jwtDecode(token);
+            const isExpired = decoded.exp * 1000 < Date.now();
+
+            if (isExpired) {
+                console.warn("Tried to login with expired token.");
+                return;
+            }
+
+            localStorage.setItem("token", token);
+            setIsAuthenticated(true);
+        } catch (error) {
+            console.error("Invalid token on login:", error);
+        }
     };
 
     const logout = () => {

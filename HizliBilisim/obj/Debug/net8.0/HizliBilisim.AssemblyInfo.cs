@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HizliBilisim")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ea30d08917bd452c4acfaac60c300712ad348d1a")]
 [assembly: System.Reflection.AssemblyProductAttribute("HizliBilisim")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HizliBilisim")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
